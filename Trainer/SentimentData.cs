@@ -1,10 +1,19 @@
-﻿using System;
+﻿using Microsoft.ML.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.ML.Data;
 
-namespace TwitchCon.Sentiment.DataModels
+namespace Trainer
 {
+  public class SentimentData
+  {
+    [LoadColumn(0)]
+    public string SentimentText;
+
+    [LoadColumn(1), ColumnName("Label")]
+    public bool Sentiment;
+  }
+
   public class SentimentPrediction : SentimentData
   {
 
@@ -15,5 +24,4 @@ namespace TwitchCon.Sentiment.DataModels
 
     public float Score { get; set; }
   }
-
 }
